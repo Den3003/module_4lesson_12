@@ -29,7 +29,7 @@
         if (confirm('Вы точно хотите выйти ?')) {
           return getResultMessage();
         } else {
-          start();
+          return start();
         }
       }
 
