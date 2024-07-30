@@ -1,9 +1,6 @@
 'use strict';
 
 (() => {
-  const FIGURES_RUS = ['камень', 'ножницы', 'бумага'];
-  const FIGURES_ENG = ['rock', 'scissors', 'paper'];
-
   const getRandomIntInclusive = (min, max) => {
     const minCeiled = Math.ceil(min);
     const maxFloored = Math.floor(max);
@@ -12,6 +9,7 @@
 
   const settingsLanguage = {
     ru: {
+      figures: ['камень', 'ножницы', 'бумага'],
       player: 'Вы :',
       computer: 'Компьютер :',
       win: 'Вы выиграли!',
@@ -22,6 +20,7 @@
       quit: 'Вы точно хотите выйти ?',
     },
     en: {
+      figures: ['rock', 'scissors', 'paper'],
       player: 'You :',
       computer: 'Computer :',
       win: 'You win!',
@@ -40,7 +39,8 @@
     };
 
     const languageGame = language === 'EN' || language === 'ENG' ? 'en' : 'ru';
-    const figures = languageGame === 'en' ? FIGURES_ENG : FIGURES_RUS;
+    const figures = languageGame === 'en' ?
+      settingsLanguage.en.figures : settingsLanguage.ru.figures;
     const settingsMessage = settingsLanguage[languageGame];
 
     const getResultMessage = () => alert(`${settingsMessage.score}\n` +
@@ -58,7 +58,7 @@
         if (confirm(`${settingsMessage.quit}`)) {
           return getResultMessage();
         } else {
-          start();
+          return start();
         }
       }
 
